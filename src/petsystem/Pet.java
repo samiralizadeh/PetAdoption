@@ -9,6 +9,9 @@ public class Pet {
     private int age;
 
     public Pet(String name, int age) {
+        if (age < 0) {
+            throw new InvalidAgeException("Age cannot be negative");
+        }
         this.name = name;
         this.age = age;
     }

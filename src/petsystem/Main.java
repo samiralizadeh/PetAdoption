@@ -15,15 +15,22 @@ public class Main {
         int dogAge = sc.nextInt();
         sc.nextLine();
 
-        Pet dog = new Dog(dogName, dogAge);
-
         System.out.print("Enter cat name: ");
         String catName = sc.nextLine();
 
         System.out.print("Enter cat age: ");
         int catAge = sc.nextInt();
 
-        Pet cat = new Cat(catName, catAge);
+        Pet dog;
+        Pet cat;
+
+        try {
+            dog = new Dog(dogName, dogAge);
+            cat = new Cat(catName, catAge);
+        } catch (InvalidAgeException e) {
+            System.out.println("Error: " + e.getMessage());
+            return;
+        }
 
         Shelter shelter = new Shelter();
         shelter.addPet(dog);
